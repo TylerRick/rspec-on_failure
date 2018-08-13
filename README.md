@@ -24,20 +24,14 @@ example.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rspec_on_failure'
+group :test do
+  gem 'rspec_on_failure'
+end
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install rspec_on_failure
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
