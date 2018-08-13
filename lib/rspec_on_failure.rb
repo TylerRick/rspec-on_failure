@@ -53,7 +53,7 @@ RSpec.configure do |config|
     begin
       if example.exception.is_a? RSpec::Expectations::ExpectationNotMetError
         run_failure_call_proc example.metadata[:on_failure], example
-        puts %(@_on_failure_proc=#{(@_on_failure_proc).inspect})
+        #puts %(@_on_failure_proc=#{(@_on_failure_proc).inspect})
         run_failure_call_proc @_on_failure_proc,             example
       end
     ensure
