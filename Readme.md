@@ -2,22 +2,34 @@
 
 Provide additional debugging information to be printed if a test fails.
 
-In case the debugging information you want to display on failure cannot be easily determined prior
+In case the debugging information you want to display on failure cannot be easily determined *prior*
 to evaluating the expectation. This won't work as expected, for example:
 
-  expect(user).to be_valid, user.errors.full_messages
+```ruby
+expect(user).to be_valid, user.errors.full_messages
+```
 
-because user.errors.full_messages is evaluated *before* it actually calls user.valid?, so it will be empty.
+because `user.errors.full_messages` gets evaluated too soon. This will show the list of errors as it
+was *prior* to calling `user.valid?` (that is, an empty array), rather than the list of errors as it
+was *after* validating therecord, which is what we actually want.
 
 Instead, you can do this, which defers evaluation of the debug information until the time of the
 failure:
 
+```ruby
    on_failure ->{ user.errors.full_messages } do
-     user.should be_valid
+     expect(user).to be_valid
    end
+```
 
 If no block is given, the provided on_failure proc remains in effect until the end of the current
 example.
+
+```ruby
+   on_failure ->{ user.errors.full_messages }
+   expect(user).to be_valid
+   expect(user.errors[:name]).to include "is required"
+```
 
 ## Installation
 

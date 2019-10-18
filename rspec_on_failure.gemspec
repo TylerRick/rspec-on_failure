@@ -5,21 +5,12 @@ require "rspec_on_failure/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec_on_failure"
-  spec.version       = RspecOnFailure::VERSION
+  spec.version       = RspecOnFailure.version
   spec.authors       = ["Tyler Rick"]
   spec.email         = ["tyler@tylerrick.com"]
 
   spec.summary       = %q{Provide additional debugging information to be printed if a test fails.}
   spec.homepage      = "https://github.com/TylerRick/rspec_on_failure"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://rubygems.org"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

@@ -14,11 +14,15 @@ module RspecOnFailure
   # failure:
   #
   #    on_failure ->{ user.errors.full_messages } do
-  #      user.should be_valid
+  #      expect(user).to be_valid
   #    end
   #
   # If no block is given, the provided on_failure proc remains in effect until the end of the current
   # example.
+  #
+  #    on_failure ->{ user.errors.full_messages }
+  #    expect(user).to be_valid
+  #    expect(user.errors[:name]).to include "is required"
   #
   def on_failure(on_failure_proc)
     if block_given?
@@ -34,7 +38,7 @@ module RspecOnFailure
   def on_failure_call_proc(on_failure_proc)
     begin
       yield
-    rescue RSpec::Expectations::ExpectationNotMetError
+    rescue RSpec::Support::AllExceptionsExceptOnesWeMustNotRescue
       run_failure_call_proc on_failure_proc
       raise
     end
@@ -51,7 +55,7 @@ RSpec.configure do |config|
   config.include RspecOnFailure
   config.after(:each) do |example|
     begin
-      if example.exception.is_a? RSpec::Expectations::ExpectationNotMetError
+      if example.exception and RSpec::Support::AllExceptionsExceptOnesWeMustNotRescue === example.exception
         run_failure_call_proc example.metadata[:on_failure], example
         #puts %(@_on_failure_proc=#{(@_on_failure_proc).inspect})
         run_failure_call_proc @_on_failure_proc,             example
