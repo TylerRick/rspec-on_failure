@@ -1,5 +1,5 @@
-RSpec.describe RspecOnFailure do
+RSpec.describe RSpecOnFailure do
   it "has a version number" do
-    expect(RspecOnFailure::VERSION).not_to be nil
+    expect(RSpecOnFailure.version).not_to be nil
   end
 end

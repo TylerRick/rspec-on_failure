@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "rspec_on_failure"
+require "rspec-on_failure"
 require 'byebug'
 
 RSpec.configure do |config|

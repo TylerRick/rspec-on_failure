@@ -5,6 +5,9 @@ recommendations of [keepachangelog.com](http://keepachangelog.com/).
 
 ## (Unreleased)
 
+## 1.0.1 (2019-10-18)
+- Rename to rspec-on_failure
+
 ## 1.0.0 (2019-10-18)
 
 ### Breaking changes

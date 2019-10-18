@@ -1,4 +1,4 @@
-# RspecOnFailure
+# RSpecOnFailure
 
 Provide additional debugging information to be printed if a test fails.
 
@@ -37,7 +37,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :test do
-  gem 'rspec_on_failure'
+  gem 'rspec-on_failure'
 end
 ```
 
@@ -53,4 +53,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/TylerRick/rspec_on_failure.
+Bug reports and pull requests are welcome on GitHub at https://github.com/TylerRick/rspec-on_failure.

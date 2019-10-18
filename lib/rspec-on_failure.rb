@@ -1,6 +1,7 @@
-require "rspec_on_failure/version"
+require 'rspec'
+require "rspec-on_failure/version"
 
-module RspecOnFailure
+module RSpecOnFailure
   # Provide additional debugging information to be printed if a test fails.
   #
   # In case the debugging information you want to display on failure cannot be easily determined prior
@@ -52,7 +53,7 @@ module RspecOnFailure
 end
 
 RSpec.configure do |config|
-  config.include RspecOnFailure
+  config.include RSpecOnFailure
   config.after(:each) do |example|
     begin
       if example.exception and RSpec::Support::AllExceptionsExceptOnesWeMustNotRescue === example.exception
